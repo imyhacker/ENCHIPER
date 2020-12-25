@@ -1,0 +1,75 @@
+#!/usr/bin/env php
+
+<?php
+/*
+ ============ {IndoSec Framework} =============
+	Coded By Arikun - IndoSec
+	Tools : ENCHIPER (ENCRYPT AND USE A CHIPER)
+	Copyrigt (C) 2020 - Nii-san Hax0r
+ 
+ ============ {IndoSec Framework} =============
+*/
+function proses($data1, $data2)
+{
+    $mode = $data1;
+    $text = fopen($data2, 'r');
+    $jaditext = fgets($text);
+
+    if ($mode === '--1') {
+
+        pathnya();
+        $export = urlencode($jaditext);
+        export($export);
+        }elseif($mode === '--2'){
+    
+            pathnya();
+            $export = base64_encode($jaditext);
+            export($export);
+        }elseif($mode === '--3'){
+    
+            pathnya();
+            $export = convert_uuencode($jaditext);
+            export($export);
+        }elseif($mode === '--4'){
+    
+        pathnya();
+            $export = base64_encode(convert_uuencode($jaditext));
+            export($export);
+        }elseif($mode === '--5'){
+   
+            pathnya();
+            $export = base64_encode(convert_uuencode(str_rot13($jaditext)));
+            export($export);
+        }elseif($mode === '--6'){
+   
+            pathnya();
+            $export = base64_encode(convert_uuencode(str_rot13(base64_encode($jaditext))));
+            export($export);
+        }elseif($mode === '--7'){
+   
+            pathnya();
+            $export = bin2hex($jaditext);
+            export($export);
+        }elseif($mode === '--8'){
+   
+            pathnya();
+            $export = password_hash($jaditext, PASSWORD_DEFAULT);
+            export($export);
+        }elseif($mode === '--9'){
+   
+            pathnya();
+            $export = crypt($jaditext, 'Arkun1337');
+            export($export);
+        }elseif($mode === '--10'){
+   
+            pathnya();
+            foreach (hash_algos() as $v) {
+                $r = hash($v, $jaditext, false);
+              $export = "[".$v."] => ".strlen($r). $r;
+              export($export);
+            }
+        }
+        else{
+            echo "Opps Something Was Wrong!";
+        }
+}

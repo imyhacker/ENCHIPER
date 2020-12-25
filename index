@@ -1,0 +1,65 @@
+#!/usr/bin/env php
+
+<?php 
+/*
+ ============ {IndoSec Framework} =============
+	Coded By Arikun - IndoSec
+	Tools : ENCHIPER (ENCRYPT AND USE A CHIPER)
+	Copyrigt (C) 2020 - Nii-san Hax0r
+ 
+ ============ {IndoSec Framework} =============
+*/
+
+include "chiper/chiper.php";
+os();
+error_reporting(0);
+function export($export)
+{
+    file_put_contents('result.txt', $export. PHP_EOL , FILE_APPEND | LOCK_EX);
+}
+
+function pathnya()
+{
+    echo "Path : ".getcwd()."/result.txt";
+}
+
+function banner()
+{
+ echo "
+    \ /
+    oVo
+\___XXX___/   Enchiper V.0.1
+ __XXXXX__    Crafted By Arikun - IndoSec
+/__XXXXX__\   Copyright (C) 2020 - Nii-sanHax0r
+/   XXX   \   Github : imyhacker/ENCHIPER
+     V
+ \n";
+}
+ function os()
+ {
+ 	$os = PHP_OS;
+ 	if ($os = "linux") {
+ 		system("clear");
+ 	}elseif ($os = "windows") {
+ 		system("cls");
+ 	}
+ }
+
+if (!$argv[1] || !$argv[2]) {
+    banner();
+    echo "Usage : php index [mode] [file]\n";
+	echo "Ex    : php index --1 text.txt \n\n";
+}elseif($argv[1] && $argv[2]){
+    $data1 = $argv[1];
+    $data2 = $argv[2];
+    banner();
+    echo "• R E S U L T •\n";
+    echo "***************\n";
+    echo "Mode : ". $data1."\n";
+    echo "File : ". $data2."\n";
+    echo "Date : ". date("D, H:i:s"). "\n";
+    proses($data1, $data2);
+}
+
+
+?>
